@@ -1,0 +1,23 @@
+version: "3.4"
+services:
+    productdbserver:
+        image: microsoft/mssql-server-linux:latest
+        container_name: productdbserver
+        restart: always
+        ports:
+            - "1433:1433"
+        environment:
+            - ACCEPT_EULA=Y 
+            - MSSQL_PID=Developer
+            - SA_PASSWORD=Your_password123
+    webapi:
+        build: .
+        restart: always
+        ports:
+            - "8090:80"
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Development
+        depends_on:
+            - productdbserver
+            
+    
