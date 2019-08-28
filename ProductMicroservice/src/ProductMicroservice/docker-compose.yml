@@ -9,7 +9,7 @@ services:
         environment:
             - ACCEPT_EULA=Y 
             - MSSQL_PID=Developer
-            - SA_PASSWORD=Your_password123
+            - SA_PASSWORD=Password_1234
     webapi:
         build: .
         restart: always
