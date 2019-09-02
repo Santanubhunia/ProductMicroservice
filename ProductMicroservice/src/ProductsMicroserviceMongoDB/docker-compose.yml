@@ -1,0 +1,22 @@
+version: "3.4"
+services:
+    productdbserver:
+        image: mongo:4.0.4
+        container_name: productdbserver
+        restart: always
+        ports:
+            - "27017:27017"
+        environment:
+          MONGO_INITDB_ROOT_USERNAME: root
+          MONGO_INITDB_ROOT_PASSWORD: example    
+    webapi:
+        build: .
+        restart: always
+        ports:
+            - "8090:80"
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Development
+        depends_on:
+            - productdbserver
+            
+    
