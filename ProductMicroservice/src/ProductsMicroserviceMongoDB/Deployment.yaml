@@ -1,0 +1,21 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: productsservicemongodb
+  labels:
+    app: productsservicemongodb
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: productsservicemongodb  
+  template:
+    metadata:
+      labels:
+        app: productsservicemongodb
+    spec:
+      containers:
+        - name: productsservicemongodb 
+          image: santanubhuniacbre/products-service-mongo:latest
+          ports:
+            - containerPort: 80

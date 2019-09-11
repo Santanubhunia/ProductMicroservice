@@ -1,0 +1,21 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: productsservice
+  labels:
+    app: productsservice
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: productsservice  
+  template:
+    metadata:
+      labels:
+        app: productsservice
+    spec:
+      containers:
+        - name: productsservice 
+          image: santanubhuniacbre/products-service:latest
+          ports:
+            - containerPort: 80
